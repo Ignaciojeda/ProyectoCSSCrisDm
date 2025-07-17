@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predicción de Victoria</title>
+
+
+</head>
+<body>
+    <h1>¿Ganará el equipo?</h1>
+    <form method="post">
+        <label for="Team">Team:</label>
+        <select name="Team" required>
+            <option value="CounterTerrorist">CounterTerrorist</option>
+            <option value="Terrorist">Terrorist</option>
+        </select><br>
+        <label for="RoundStartingEquipmentValue">Valor de equipo inicial (Ronda):</label>
+        <input type="number" step="any" name="RoundStartingEquipmentValue" required><br>
+
+        <label for="TeamStartingEquipmentValue">Valor total de equipo:</label>
+        <input type="number" step="any" name="TeamStartingEquipmentValue" required><br>
+
+        <label for="MatchHeadshots">Headshots en la partida:</label>
+        <input type="number" step="any" name="MatchHeadshots" required><br>
+
+        <label for="MatchAssists">Asistencias en la partida:</label>
+        <input type="number" step="any" name="MatchAssists" required><br>
+
+        <label for="MatchFlankKills">Kills por flanqueo:</label>
+        <input type="number" step="any" name="MatchFlankKills" required><br>
+
+        <label for="RLethalGrenadesThrown">Granadas letales lanzadas:</label>
+        <input type="number" step="any" name="RLethalGrenadesThrown" required><br>
+
+        <label for="Map">Map:</label>
+        <select name="Map" required>
+            <option value="de_inferno">de_inferno</option>
+            <option value="de_nuke">de_nuke</option>
+            <option value="de_mirage">de_mirage</option>
+            <option value="de_dust2">de_dust2</option>
+        </select><br>
+        <input type="submit" value="Predecir victoria">
+    </form>
+
+    {% if resultado is not none %}
+        <h2>Resultado: {{ 'Victoria' if resultado == 1 else 'Derrota' }}</h2>
+    {% endif %}
+
+    <br>
+    <a href="/">Volver al hub</a>
+</body>
+</html>
