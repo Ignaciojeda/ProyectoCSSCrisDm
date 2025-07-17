@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predicción de Kills</title>
+
+</head>
+<body>
+    <h2>Predicción de Kills en la Partida</h2>
+    <form method="post">
+        <label for="Team">Team:</label>
+        <select name="Team" required>
+            <option value="CounterTerrorist">CounterTerrorist</option>
+            <option value="Terrorist">Terrorist</option>
+        </select><br>
+
+        <label for="RoundStartingEquipmentValue">RoundStartingEquipmentValue:</label>
+        <input type="number" name="RoundStartingEquipmentValue" required><br>
+
+        <label for="TeamStartingEquipmentValue">TeamStartingEquipmentValue:</label>
+        <input type="number" name="TeamStartingEquipmentValue" required><br>
+
+        <label for="MatchHeadshots">MatchHeadshots:</label>
+        <input type="number" name="MatchHeadshots" required><br>
+
+        <label for="MatchAssists">MatchAssists:</label>
+        <input type="number" name="MatchAssists" required><br>
+
+        <label for="MatchFlankKills">MatchFlankKills:</label>
+        <input type="number" name="MatchFlankKills" required><br>
+
+        <label for="RLethalGrenadesThrown">RLethalGrenadesThrown:</label>
+        <input type="number" name="RLethalGrenadesThrown" required><br>
+
+        <label for="Map">Map:</label>
+        <select name="Map" required>
+            <option value="de_inferno">de_inferno</option>
+            <option value="de_nuke">de_nuke</option>
+            <option value="de_mirage">de_mirage</option>
+            <option value="de_dust2">de_dust2</option>
+        </select><br>
+
+        <button type="submit">Predecir</button>
+
+        
+    </form>
+
+    {% if resultado is not none %}
+<h3>Predicción de kills: {{ resultado }}</h3>
+{% endif %}
+
+</body>
+</html>
