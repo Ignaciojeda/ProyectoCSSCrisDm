@@ -112,39 +112,44 @@
     <div class="container">
         <h1>🔍 ¿Ganará el equipo?</h1>
         <form method="post">
-            <label for="Team">Equipo:</label>
-            <select name="Team" required>
-                <option value="CounterTerrorist">Counter-Terrorist</option>
-                <option value="Terrorist">Terrorist</option>
-            </select>
+            <label for="Avg_RLethalGrenadesThrown">Prom. de granadas letales lanzadas:</label>
+            <input type="number" step="any" name="Avg_RLethalGrenadesThrown" required>
 
-            <label for="RoundStartingEquipmentValue">Valor inicial del equipo (ronda):</label>
-            <input type="number" step="any" name="RoundStartingEquipmentValue" required>
+            <label for="Sum_RoundKills">Total de kills en rondas:</label>
+            <input type="number" step="any" name="Sum_RoundKills" required>
 
-            <label for="TeamStartingEquipmentValue">Valor total del equipo:</label>
-            <input type="number" step="any" name="TeamStartingEquipmentValue" required>
+            <label for="Sum_RoundAssists">Total asistencias en rondas:</label>
+            <input type="number" step="any" name="Sum_RoundAssists" required>
 
-            <label for="RoundHeadshots">Headshots en la Ronda:</label>
-            <input type="number" step="any" name="RoundHeadshots" required>
+            <label for="Avg_RoundHeadshots">Prom. headshots por ronda:</label>
+            <input type="number" step="any" name="Avg_RoundHeadshots" required>
 
-            <label for="RoundAssists">Asistencias en la Ronda:</label>
-            <input type="number" step="any" name="RoundAssists" required>
+            <label for="Avg_RoundFlankKills">Prom. kills por flanqueo (ronda):</label>
+            <input type="number" step="any" name="Avg_RoundFlankKills" required>
 
-            <label for="RoundFlankKills">Kills por flanqueo en la Ronda:</label>
-            <input type="number" step="any" name="RoundFlankKills" required>
-            
+            <label for="Avg_Survived">Prom. jugadores sobrevivientes:</label>
+            <input type="number" step="any" name="Avg_Survived" required>
 
-            <label for="MatchHeadshots">Headshots en la partida:</label>
-            <input type="number" step="any" name="MatchHeadshots" required>
+            <label for="Avg_RoundStartingEquipmentValue">Prom. valor de equipo al inicio de ronda:</label>
+            <input type="number" step="any" name="Avg_RoundStartingEquipmentValue" required>
 
-            <label for="MatchAssists">Asistencias en la partida:</label>
-            <input type="number" step="any" name="MatchAssists" required>
+            <label for="Avg_TeamStartingEquipmentValue">Prom. valor total del equipo:</label>
+            <input type="number" step="any" name="Avg_TeamStartingEquipmentValue" required>
 
-            <label for="MatchFlankKills">Kills por flanqueo:</label>
-            <input type="number" step="any" name="MatchFlankKills" required>
+            <label for="Sum_MatchKills">Kills totales en partida:</label>
+            <input type="number" step="any" name="Sum_MatchKills" required>
 
-            <label for="RLethalGrenadesThrown">Granadas letales lanzadas:</label>
-            <input type="number" step="any" name="RLethalGrenadesThrown" required>
+            <label for="Sum_MatchFlankKills">Kills por flanqueo en partida:</label>
+            <input type="number" step="any" name="Sum_MatchFlankKills" required>
+
+            <label for="Sum_MatchAssists">Asistencias totales en partida:</label>
+            <input type="number" step="any" name="Sum_MatchAssists" required>
+
+            <label for="Sum_MatchHeadshots">Headshots totales en partida:</label>
+            <input type="number" step="any" name="Sum_MatchHeadshots" required>
+
+            <label for="Avg_outlier">Promedio de outlier:</label>
+            <input type="number" step="any" name="Avg_outlier" required>
 
             <label for="Map">Mapa:</label>
             <select name="Map" required>
@@ -159,7 +164,8 @@
 
         {% if resultado is not none %}
             <div class="resultado {{ 'victoria' if resultado == 1 else 'derrota' }}">
-                Resultado: {{ '🔥 ¡Victoria asegurada!' if resultado == 1 else '💀 Derrota inminente' }}
+                Resultado: {{ '🔥 ¡Victoria asegurada!' if resultado == 1 else '💀 Derrota inminente' }}<br>
+                Valor predicho: {{ resultado }}
             </div>
         {% endif %}
 
