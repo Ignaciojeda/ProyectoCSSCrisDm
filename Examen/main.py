@@ -30,30 +30,34 @@ def prediccion_ganar_get(request: Request):
 @app.post("/ganar", response_class=HTMLResponse)
 def prediccion_ganar_post(
     request: Request,
-    RoundStartingEquipmentValue: float = Form(...),
-    TeamStartingEquipmentValue: float = Form(...),
-    RoundHeadshots: float = Form(...),
-    RoundAssists: float = Form(...),
-    RoundFlankKills: float = Form(...),
-    MatchHeadshots: float = Form(...),
-    MatchAssists: float = Form(...),
-    MatchFlankKills: float = Form(...),
-    RLethalGrenadesThrown: float = Form(...),
+    Avg_RLethalGrenadesThrown: float = Form(...),
+    Sum_RoundKills: float = Form(...),
+    Sum_RoundAssists: float = Form(...),
+    Avg_RoundHeadshots: float = Form(...),
+    Avg_RoundFlankKills: float = Form(...),
+    Avg_Survived: float = Form(...),
+    Avg_RoundStartingEquipmentValue: float = Form(...),
+    Avg_TeamStartingEquipmentValue: float = Form(...),
+    Sum_MatchKills: float = Form(...),
+    Sum_MatchFlankKills: float = Form(...),
+    Sum_MatchAssists: float = Form(...),
+    Sum_MatchHeadshots: float = Form(...),
+    Avg_outlier: float = Form(...),
 ):
     input_data = pd.DataFrame([{
-        'Avg_RLethalGrenadesThrown': RLethalGrenadesThrown,
-        'Sum_RoundKills': 0,  # Puedes ajustar estos valores si tienes más entradas
-        'Sum_RoundAssists': RoundAssists,
-        'Avg_RoundHeadshots': RoundHeadshots,
-        'Avg_RoundFlankKills': RoundFlankKills,
-        'Avg_Survived': 1.0,  # Supuesto positivo
-        'Avg_RoundStartingEquipmentValue': RoundStartingEquipmentValue,
-        'Avg_TeamStartingEquipmentValue': TeamStartingEquipmentValue,
-        'Sum_MatchKills': 0,  # Puedes ajustar o estimar según el contexto
-        'Sum_MatchFlankKills': MatchFlankKills,
-        'Sum_MatchAssists': MatchAssists,
-        'Sum_MatchHeadshots': MatchHeadshots,
-        'Avg_outlier': 0  # Puedes cambiar si tienes un detector de outliers
+        'Avg_RLethalGrenadesThrown': Avg_RLethalGrenadesThrown,
+        'Sum_RoundKills': Sum_RoundKills,
+        'Sum_RoundAssists': Sum_RoundAssists,
+        'Avg_RoundHeadshots': Avg_RoundHeadshots,
+        'Avg_RoundFlankKills': Avg_RoundFlankKills,
+        'Avg_Survived': Avg_Survived,
+        'Avg_RoundStartingEquipmentValue': Avg_RoundStartingEquipmentValue,
+        'Avg_TeamStartingEquipmentValue': Avg_TeamStartingEquipmentValue,
+        'Sum_MatchKills': Sum_MatchKills,
+        'Sum_MatchFlankKills': Sum_MatchFlankKills,
+        'Sum_MatchAssists': Sum_MatchAssists,
+        'Sum_MatchHeadshots': Sum_MatchHeadshots,
+        'Avg_outlier': Avg_outlier,
     }])
 
     prediccion = modelo_clasificacion.predict(input_data)[0]
@@ -62,6 +66,7 @@ def prediccion_ganar_post(
         "request": request,
         "resultado": int(prediccion)
     })
+
 
 @app.get("/kills", response_class=HTMLResponse)
 def prediccion_kills_get(request: Request):
