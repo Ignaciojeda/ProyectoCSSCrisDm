@@ -84,7 +84,6 @@ def prediccion_kills_post(
     MatchAssists: float = Form(...),
     MatchFlankKills: float = Form(...),
     RLethalGrenadesThrown: float = Form(...),
-    Map: str = Form(...)
 ):
     # Crear DataFrame con los datos de entrada
     input_data = pd.DataFrame([{
@@ -95,7 +94,6 @@ def prediccion_kills_post(
         'MatchAssists': MatchAssists,
         'MatchFlankKills': MatchFlankKills,
         'RLethalGrenadesThrown': RLethalGrenadesThrown,
-        'Map': Map
     }])
 
     # Convertir las variables categóricas a dummies
