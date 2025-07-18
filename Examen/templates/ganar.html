@@ -1,32 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Predicción de Victoria</title>
-     <style>
+    <meta charset="UTF-8">
+    <title>Predicción de Victoria | CS:GO</title>
+    <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f4f6f9;
+            background: url('https://images.unsplash.com/photo-1617736167919-e76ae34ffb80') no-repeat center center fixed;
+            background-size: cover;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
+            color: #f2f2f2;
         }
 
         .container {
-            background-color: white;
-            margin-top: 40px;
-            padding: 30px 40px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background-color: rgba(0, 0, 0, 0.8);
+            margin-top: 50px;
+            padding: 40px 50px;
+            border-radius: 16px;
+            box-shadow: 0 0 20px #00ffcc;
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
         }
 
         h1 {
             text-align: center;
-            color: #2c3e50;
+            font-size: 32px;
+            color: #ffcc00;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 8px #000;
         }
 
         form {
@@ -37,92 +43,117 @@
         label {
             margin-top: 15px;
             font-weight: bold;
-            color: #34495e;
+            color: #00ffcc;
         }
 
         input, select {
             padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+            border-radius: 6px;
+            border: none;
+            background-color: #1a1a1a;
+            color: #f2f2f2;
             margin-top: 5px;
+            font-size: 15px;
         }
 
         input[type="submit"] {
-            margin-top: 25px;
-            background-color: #2980b9;
+            margin-top: 30px;
+            background-color: #0077cc;
             color: white;
+            font-weight: bold;
             border: none;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            font-size: 18px;
+            padding: 12px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px #00ffcc;
         }
 
         input[type="submit"]:hover {
-            background-color: #1f618d;
+            background-color: #00bfff;
+            transform: scale(1.05);
         }
 
         .resultado {
-            margin-top: 25px;
+            margin-top: 30px;
             text-align: center;
-            font-size: 20px;
-            color: #2c3e50;
+            font-size: 22px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .resultado.victoria {
+            color: #00ff88;
+            text-shadow: 0 0 10px #00ff88;
+        }
+
+        .resultado.derrota {
+            color: #ff4d4d;
+            text-shadow: 0 0 10px #ff4d4d;
         }
 
         a {
             display: block;
             text-align: center;
-            margin-top: 30px;
-            color: #3498db;
+            margin-top: 35px;
+            color: #00bfff;
             text-decoration: none;
+            font-weight: bold;
         }
 
         a:hover {
             text-decoration: underline;
+            color: #ffffff;
         }
     </style>
-
-
 </head>
 <body>
-    <h1>¿Ganará el equipo?</h1>
-    <form method="post">
-        <label for="Team">Team:</label>
-        <select name="Team" required>
-            <option value="CounterTerrorist">CounterTerrorist</option>
-            <option value="Terrorist">Terrorist</option>
-        </select><br>
-        <label for="RoundStartingEquipmentValue">Valor de equipo inicial (Ronda):</label>
-        <input type="number" step="any" name="RoundStartingEquipmentValue" required><br>
+    <div class="container">
+        <h1>🔍 ¿Ganará el equipo?</h1>
+        <form method="post">
+            <label for="Team">Equipo:</label>
+            <select name="Team" required>
+                <option value="CounterTerrorist">Counter-Terrorist</option>
+                <option value="Terrorist">Terrorist</option>
+            </select>
 
-        <label for="TeamStartingEquipmentValue">Valor total de equipo:</label>
-        <input type="number" step="any" name="TeamStartingEquipmentValue" required><br>
+            <label for="RoundStartingEquipmentValue">Valor inicial del equipo (ronda):</label>
+            <input type="number" step="any" name="RoundStartingEquipmentValue" required>
 
-        <label for="MatchHeadshots">Headshots en la partida:</label>
-        <input type="number" step="any" name="MatchHeadshots" required><br>
+            <label for="TeamStartingEquipmentValue">Valor total del equipo:</label>
+            <input type="number" step="any" name="TeamStartingEquipmentValue" required>
 
-        <label for="MatchAssists">Asistencias en la partida:</label>
-        <input type="number" step="any" name="MatchAssists" required><br>
+            <label for="MatchHeadshots">Headshots en la partida:</label>
+            <input type="number" step="any" name="MatchHeadshots" required>
 
-        <label for="MatchFlankKills">Kills por flanqueo:</label>
-        <input type="number" step="any" name="MatchFlankKills" required><br>
+            <label for="MatchAssists">Asistencias en la partida:</label>
+            <input type="number" step="any" name="MatchAssists" required>
 
-        <label for="RLethalGrenadesThrown">Granadas letales lanzadas:</label>
-        <input type="number" step="any" name="RLethalGrenadesThrown" required><br>
+            <label for="MatchFlankKills">Kills por flanqueo:</label>
+            <input type="number" step="any" name="MatchFlankKills" required>
 
-        <label for="Map">Map:</label>
-        <select name="Map" required>
-            <option value="de_inferno">de_inferno</option>
-            <option value="de_nuke">de_nuke</option>
-            <option value="de_mirage">de_mirage</option>
-            <option value="de_dust2">de_dust2</option>
-        </select><br>
-        <input type="submit" value="Predecir victoria">
-    </form>
+            <label for="RLethalGrenadesThrown">Granadas letales lanzadas:</label>
+            <input type="number" step="any" name="RLethalGrenadesThrown" required>
 
-    {% if resultado is not none %}
-        <h2>Resultado: {{ 'Victoria' if resultado == 1 else 'Derrota' }}</h2>
-    {% endif %}
+            <label for="Map">Mapa:</label>
+            <select name="Map" required>
+                <option value="de_inferno">de_inferno</option>
+                <option value="de_nuke">de_nuke</option>
+                <option value="de_mirage">de_mirage</option>
+                <option value="de_dust2">de_dust2</option>
+            </select>
 
-    <br>
-    <a href="/">Volver al hub</a>
+            <input type="submit" value="Predecir victoria">
+        </form>
+
+        {% if resultado is not none %}
+            <div class="resultado {{ 'victoria' if resultado == 1 else 'derrota' }}">
+                Resultado: {{ '🔥 ¡Victoria asegurada!' if resultado == 1 else '💀 Derrota inminente' }}
+            </div>
+        {% endif %}
+
+        <a href="/">⏎ Volver al inicio</a>
+    </div>
 </body>
 </html>

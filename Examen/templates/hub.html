@@ -2,41 +2,58 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Hub de Predicciones</title>
+    <title>Hub de Predicciones | CS:GO</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('https://images.unsplash.com/photo-1617736167919-e76ae34ffb80') no-repeat center center fixed;
+            background-size: cover;
+            color: #f2f2f2;
             text-align: center;
             padding: 50px;
+            margin: 0;
         }
 
         h1 {
-            color: #0077cc;
-            margin-bottom: 40px;
+            font-size: 42px;
+            color: #ffcc00;
+            text-shadow: 2px 2px 8px #000;
+            margin-bottom: 60px;
         }
 
         a {
             display: inline-block;
-            margin: 15px;
-            padding: 12px 24px;
-            background-color: #0077cc;
-            color: white;
+            margin: 20px;
+            padding: 14px 28px;
+            background: linear-gradient(145deg, #1f1f1f, #3a3a3a);
+            color: #f2f2f2;
             text-decoration: none;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
+            border-radius: 10px;
+            font-size: 18px;
+            box-shadow: 0 0 10px #00ffcc, 0 0 20px #0077cc;
+            transition: all 0.3s ease-in-out;
         }
 
         a:hover {
-            background-color: #005fa3;
+            background: #0077cc;
+            color: #fff;
+            box-shadow: 0 0 15px #00ffcc, 0 0 30px #0077cc;
+            transform: scale(1.05);
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.75);
+            padding: 60px;
+            border-radius: 20px;
+            display: inline-block;
         }
     </style>
 </head>
 <body>
-    <h1>Elige una predicción</h1>
-    <a href="/ganar">¿Ganará el equipo?</a><br>
-    <a href="/kills">¿Cuántas kills tendrá?</a>
+    <div class="overlay">
+        <h1>🔫 CS:GO - Hub de Predicciones</h1>
+        <a href="/ganar">¿Ganará el equipo?</a><br>
+        <a href="/kills">¿Cuántas kills tendrá?</a>
+    </div>
 </body>
 </html>
