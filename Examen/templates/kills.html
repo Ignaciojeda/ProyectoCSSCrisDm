@@ -1,108 +1,150 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Predicción de Kills</title>
-
+    <meta charset="UTF-8">
+    <title>Predicción de Kills | CS:GO</title>
     <style>
         body {
-            background-color: #f0f2f5;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('https://images.unsplash.com/photo-1617736167919-e76ae34ffb80') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
+            align-items: flex-start;
+            min-height: 100vh;
+            color: #f2f2f2;
         }
 
         .container {
-            background-color: #ffffff;
-            padding: 30px 40px;
-            border-radius: 12px;
-            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+            background-color: rgba(0, 0, 0, 0.8);
+            margin-top: 50px;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 0 20px #00ffcc;
             width: 100%;
-            max-width: 500px;
+            max-width: 700px;
         }
 
         h2 {
             text-align: center;
-            color: #333;
-            margin-bottom: 20px;
+            font-size: 30px;
+            color: #00ffcc;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 8px #000;
         }
 
         label {
-            display: block;
             margin-top: 15px;
             font-weight: bold;
-            color: #555;
+            color: #00bfff;
+            display: block;
         }
 
         input, select {
             width: 100%;
             padding: 10px;
             margin-top: 5px;
-            border: 1px solid #ccc;
             border-radius: 6px;
+            border: none;
+            background-color: #1a1a1a;
+            color: #f2f2f2;
+            font-size: 15px;
             box-sizing: border-box;
         }
 
         button {
             margin-top: 25px;
             width: 100%;
-            padding: 12px;
-            background-color: #007bff;
+            padding: 14px;
+            background-color: #0077cc;
             color: white;
+            font-weight: bold;
             border: none;
-            border-radius: 6px;
-            font-size: 16px;
+            border-radius: 10px;
+            font-size: 18px;
             cursor: pointer;
+            box-shadow: 0 0 10px #00ffcc;
+            transition: all 0.3s ease;
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #00bfff;
+            transform: scale(1.05);
         }
 
         h3 {
             text-align: center;
             margin-top: 30px;
-            color: #2c3e50;
+            font-size: 24px;
+            color: #ffcc00;
+            text-shadow: 0 0 10px #000;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #00bfff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #ffffff;
         }
     </style>
-
 </head>
 <body>
-    <h2>Predicción de Kills en la Partida</h2>
-    <form method="post">
-        <label for="Team">Team:</label>
-        <select name="Team" required>
-            <option value="CounterTerrorist">CounterTerrorist</option>
-            <option value="Terrorist">Terrorist</option>
-        </select><br>
+    <div class="container">
+        <h2>🎯 Predicción de Kills en la Partida</h2>
+        <form method="post">
+            <label for="Team">Equipo:</label>
+            <select name="Team" required>
+                <option value="CounterTerrorist">Counter-Terrorist</option>
+                <option value="Terrorist">Terrorist</option>
+            </select>
 
-        <label for="RoundStartingEquipmentValue">RoundStartingEquipmentValue:</label>
-        <input type="number" name="RoundStartingEquipmentValue" required><br>
+            <label for="RoundStartingEquipmentValue">Valor de equipo inicial (ronda):</label>
+            <input type="number" name="RoundStartingEquipmentValue" required>
 
-        <label for="TeamStartingEquipmentValue">TeamStartingEquipmentValue:</label>
-        <input type="number" name="TeamStartingEquipmentValue" required><br>
+            <label for="TeamStartingEquipmentValue">Valor total del equipo:</label>
+            <input type="number" name="TeamStartingEquipmentValue" required>
 
-        <label for="MatchHeadshots">MatchHeadshots:</label>
-        <input type="number" name="MatchHeadshots" required><br>
+            <label for="MatchHeadshots">Headshots en la partida:</label>
+            <input type="number" name="MatchHeadshots" required>
 
-        <label for="MatchAssists">MatchAssists:</label>
-        <input type="number" name="MatchAssists" required><br>
+            <label for="MatchAssists">Asistencias en la partida:</label>
+            <input type="number" name="MatchAssists" required>
 
-        <label for="MatchFlankKills">MatchFlankKills:</label>
-        <input type="number" name="MatchFlankKills" required><br>
+            <label for="MatchFlankKills">Kills por flanqueo:</label>
+            <input type="number" name="MatchFlankKills" required>
 
-        <label for="RLethalGrenadesThrown">RLethalGrenadesThrown:</label>
-        <input type="number" name="RLethalGrenadesThrown" required><br>
+            <label for="RLethalGrenadesThrown">Granadas letales lanzadas:</label>
+            <input type="number" name="RLethalGrenadesThrown" required>
 
+<<<<<<< HEAD
         <button type="submit">Predecir</button>
+=======
+            <label for="Map">Mapa:</label>
+            <select name="Map" required>
+                <option value="de_inferno">de_inferno</option>
+                <option value="de_nuke">de_nuke</option>
+                <option value="de_mirage">de_mirage</option>
+                <option value="de_dust2">de_dust2</option>
+            </select>
 
-        
-    </form>
+            <button type="submit">Predecir</button>
+        </form>
+>>>>>>> 89773593af90f3edd55a10080f753d72132caebb
 
-    {% if resultado is not none %}
-<h3>Predicción de kills: {{ resultado }}</h3>
-{% endif %}
+        {% if resultado is not none %}
+            <h3>🔫 Kills esperadas: {{ resultado }}</h3>
+        {% endif %}
 
+        <a href="/">⏎ Volver al inicio</a>
+    </div>
 </body>
 </html>
