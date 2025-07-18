@@ -31,7 +31,7 @@ features = [
     'Sum_MatchFlankKills',
     'Sum_MatchAssists',
     'Sum_MatchHeadshots',
-    'Avg_outlier'
+    0
 ]
 
 @app.get("/", response_class=HTMLResponse)
@@ -58,10 +58,12 @@ async def predecir_victoria(
     Sum_MatchFlankKills: float = Form(...),
     Sum_MatchAssists: float = Form(...),
     Sum_MatchHeadshots: float = Form(...),
-    Avg_outlier: float = Form(...)
+    Avg_outlier: float = Form(0.0)
 ):
     try:
         # Crear arreglo con las variables de entrada
+        outlier = 0
+
         entrada = np.array([[
             Avg_RLethalGrenadesThrown,
             Sum_RoundKills,
@@ -75,7 +77,7 @@ async def predecir_victoria(
             Sum_MatchFlankKills,
             Sum_MatchAssists,
             Sum_MatchHeadshots,
-            Avg_outlier
+            outlier
         ]])
 
         # Escalar entrada
