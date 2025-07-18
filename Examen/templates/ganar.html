@@ -109,6 +109,12 @@
     </style>
 </head>
 <body>
+    {% if error %}
+    <div style="color: #ff4d4d; font-weight: bold; margin-bottom: 20px; text-align: center;">
+        ⚠️ Error: {{ error }}
+    </div>
+    {% endif %}
+
     <div class="container">
         <h1>🔍 ¿Ganará el equipo?</h1>
         <form method="post">
@@ -154,13 +160,14 @@
 
             <input type="submit" value="Predecir victoria">
         </form>
-
-        {% if resultado is not none %}
-            <div class="resultado {{ 'victoria' if resultado == 1 else 'derrota' }}">
-                Resultado: {{ '🔥 ¡Victoria asegurada!' if resultado == 1 else '💀 Derrota inminente' }}<br>
-                Valor predicho: {{ resultado }}
-            </div>
+        {% if resultado and probabilidad %}
+        <div class="resultado">
+            Resultado: {{ resultado }}<br>
+            Probabilidad de victoria: {{ probabilidad }}%
+        </div>
         {% endif %}
+
+
 
         <a href="/">⏎ Volver al inicio</a>
     </div>
